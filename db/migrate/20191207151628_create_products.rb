@@ -4,7 +4,7 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.string :title
       t.text :description
       t.string :image_url
-      t.decimal :price, precision: 8, scale: 2
+      t.decimal :price, precision: 8, scale: 2 # Added precision and scale with initial db:migrate
       t.timestamps
     end
   end

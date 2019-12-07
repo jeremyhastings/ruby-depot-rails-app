@@ -16,9 +16,10 @@
     <%= form.text_field :title %>
   </div>
 
+  <%# Added Columns and Rows to create more space for writing. December 7th, 2019 %>
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, rows: 10, cols: 60 %>
   </div>
 
   <div class="field">
