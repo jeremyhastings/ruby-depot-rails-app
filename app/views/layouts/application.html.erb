@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%# Changed title to Depot on December 7th, 2019 %>
+    <title>Depot</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <%# Added main with class to associate controllers with stylesheets.  December 7th, 2019 %>
+    <main class='<%= controller.controller_name %>'>
+
+      <%= yield %>
+
+    </main>
+
+  </body>
+</html>
