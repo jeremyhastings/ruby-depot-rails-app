@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# This information was copied from Agile Web Development in Rails 6.  It was found in depot_a.
+
 Product.delete_all
 Product.create!(title: 'Docker for Rails Developers',
                 description:
