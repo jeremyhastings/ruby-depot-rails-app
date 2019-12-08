@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%# Changed title to Depot on December 7th, 2019 %>
-    <title>Depot</title>
+    <%# Changed title on December 8th, 2019 %>
+    <title>Pragprog Books Online Store</title>
+    <%# csrf tags help to prevent cross-site forgery %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,13 +12,28 @@
   </head>
 
   <body>
+    <header class="main">
+      <%= image_tag 'logo.svg', alt: 'The Pragmatic Bookshelf' %>
+      <%# This sets a title based off the page_title variable if set by the page.  Otherwise blank. %>
+      <h1><%= @page_title %></h1>
+    </header>
+    <section class="content">
+      <nav class="side_nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/questions">Questions</a></li>
+          <li><a href="/news">News</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+      <%# Added main with class to associate controllers with stylesheets.  December 7th, 2019 %>
+      <main class='<%= controller.controller_name %>'>
 
-    <%# Added main with class to associate controllers with stylesheets.  December 7th, 2019 %>
-    <main class='<%= controller.controller_name %>'>
+        <%= yield %>
 
-      <%= yield %>
+      </main>
+    </section>
 
-    </main>
 
   </body>
 </html>
