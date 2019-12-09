@@ -56,9 +56,14 @@ class CartsController < ApplicationController
   # DELETE /carts/1
   # DELETE /carts/1.json
   def destroy
-    @cart.destroy
+    # This makes sure it destroys the right cart_id.
+    @cart.destroy if @cart.id == session[:cart_id]
+    # And this makes it nil.  December 9th, 2019.
+    session[:cart_id] = nil
+
     respond_to do |format|
-      format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
+      # Redirects it back to the store instead of the empty cart.
+      format.html { redirect_to store_index_url, notice: 'Your cart is currently empty.' }
       format.json { head :no_content }
     end
   end

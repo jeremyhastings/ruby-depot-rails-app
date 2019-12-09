@@ -11,6 +11,7 @@
   <% end %>
 </ul>
 
+<%# Added Empty cart button.  December 9th, 2019. %>
 <%= button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Are you sure?' } %>
 
 <%= link_to 'Edit', edit_cart_path(@cart) %> |
