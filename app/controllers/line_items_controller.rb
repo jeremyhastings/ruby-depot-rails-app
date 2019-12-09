@@ -1,4 +1,9 @@
 class LineItemsController < ApplicationController
+
+  # Uses CurrentCart module from concerns.  Added Cart on December 9th, 2019.
+  include CurrentCart
+  before_action :set_cart, only: [:create]
+
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   # GET /line_items
