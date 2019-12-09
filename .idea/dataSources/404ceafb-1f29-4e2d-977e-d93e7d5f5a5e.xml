@@ -43,7 +43,6 @@
     <index id="17" parent="6" name="sqlite_autoindex_ar_internal_metadata_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>key</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="18" parent="6">
@@ -99,11 +98,9 @@
     </column>
     <index id="28" parent="8" name="index_line_items_on_product_id">
       <ColNames>product_id</ColNames>
-      <ColumnCollations></ColumnCollations>
     </index>
     <index id="29" parent="8" name="index_line_items_on_cart_id">
       <ColNames>cart_id</ColNames>
-      <ColumnCollations></ColumnCollations>
     </index>
     <key id="30" parent="8">
       <ColNames>id</ColNames>
@@ -163,7 +160,6 @@
     <index id="42" parent="10" name="sqlite_autoindex_schema_migrations_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>version</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="43" parent="10">
