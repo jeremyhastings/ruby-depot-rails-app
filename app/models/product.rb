@@ -14,7 +14,7 @@ class Product < ApplicationRecord
 
   # This insures there are no product entries with the same name.  Prevents duplication.  December 7th, 2019.
   validates :title, uniqueness: true
-  
+
   # TODO: image_url has conflicting validation.  It must have a presence of true but it also allows a blank entry.
   # This will allow no image but if an image is provided it is a .gif, .jpg, or .png file.  December 7th, 2019.
   validates :image_url, allow_blank: true, format: {
