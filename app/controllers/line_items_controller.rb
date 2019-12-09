@@ -81,6 +81,7 @@ class LineItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_item_params
-      params.require(:line_item).permit(:product_id, :cart_id)
+      # Removed cart_id from permitted line items.  Protect access to carts.  Added December 9th, 2019.
+      params.require(:line_item).permit(:product_id)
     end
 end
