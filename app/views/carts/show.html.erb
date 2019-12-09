@@ -7,13 +7,15 @@
   <h2>Your Cart</h2>
   <%# Changed Cart to a Table.  December 9th, 2019. %>
   <table>
-    <% @cart.line_items.each do | line_item | %>
-      <tr>
-        <td class="quantity"><%= line_item.quantity %></td>
-        <td><%= line_item.product.title %></td>
-        <td class="price"><%= number_to_currency(line_item.total_price) %></td>
-      </tr>
-    <% end %>
+    <%# It calls the partial for every item.  The partial is _line_item in views/line_items%>
+    <%= render(@cart.line_items) %>
+    <%# @cart.line_items.each do | line_item | %>
+<!--      <tr>-->
+<!--        <td class="quantity"><%#= line_item.quantity %></td>-->
+<!--        <td><%#= line_item.product.title %></td>-->
+<!--        <td class="price"><%#= number_to_currency(line_item.total_price) %></td>-->
+<!--      </tr>-->
+    <%# end %>
     <tfoot>
     <tr>
       <th colspan="2">Total:</th>
