@@ -91,3 +91,18 @@ header.main {
   padding: 1em 1.414em;
   text-align: center;
 }
+// Added to create white background for the cart in the sidebar.  December 9th, 2019.
+#cart {
+  article {
+    h2 {
+      martin-top: 0;
+    }
+    background: white;
+    border-radius: 0.5em;
+    margin: 1em;
+    padding: 1.414em;
+    @media (min-width: 30em) {
+      margin: 0; // desktop doesn't need this margin.
+    }
+  }
+}
