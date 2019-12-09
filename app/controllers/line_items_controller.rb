@@ -1,4 +1,9 @@
 class LineItemsController < ApplicationController
+
+  # Uses CurrentCart module from concerns.  Added Cart on December 9th, 2019.
+  include CurrentCart
+  before_action :set_cart, only: [:create]
+
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   # GET /line_items
@@ -24,11 +29,16 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    @line_item = LineItem.new(line_item_params)
+    # Use params object to get product_id and get product.  December 9th, 2019.
+    product = Product.find(params[:product_id])
+    # Pass product into @cart.line_items.build to establish relationship between product and cart.  December 9th, 2019.
+    @line_item = @cart.line_items.build(product: product)
+    #@line_item = LineItem.new(line_item_params)
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item, notice: 'Line item was successfully created.' }
+        # Modified line to redirect to @line_item.cart instead of @line_item.  December 9th, 2019.
+        format.html { redirect_to @line_item.cart, notice: 'Line item was successfully created.' }
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }
