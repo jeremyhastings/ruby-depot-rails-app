@@ -12,4 +12,9 @@ class Cart < ApplicationRecord
     end
     current_item
   end
+
+  # Created to produce total_price for Cart.  December 9th, 2019.
+  def total_price
+    line_items.to_a.sum { | item | item.total_price }
+  end
 end
