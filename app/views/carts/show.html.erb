@@ -1,15 +1,30 @@
+<article>
 <%# Added on December 9th, 2019. %>
-<% if notice %>
-  <aside id="notice"><%= notice %></aside>
-<% end %>
-
-<h2>Your Pragmatic Cart</h2>
-<ul>
-  <% @cart.line_items.each do | item | %>
-    <%# Added line to display quantity.  December 9th, 2019. %>
-    <li><%= item.quantity %> &times; <%= item.product.title %></li>
+  <% if notice %>
+    <aside id="notice"><%= notice %></aside>
   <% end %>
-</ul>
 
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %>
+  <h2>Your Cart</h2>
+  <%# Changed Cart to a Table.  December 9th, 2019. %>
+  <table>
+    <% @cart.line_items.each do | line_item | %>
+      <tr>
+        <td class="quantity"><%= line_item.quantity %></td>
+        <td><%= line_item.product.title %></td>
+        <td class="price"><%= number_to_currency(line_item.total_price) %></td>
+      </tr>
+    <% end %>
+    <tfoot>
+    <tr>
+      <th colspan="2">Total:</th>
+      <td class="price"><%= number_to_currency(@cart.total_price) %></td>
+    </tr>
+    </tfoot>
+  </table>
+  <%# Added Empty cart button.  December 9th, 2019. %>
+  <%= button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Are you sure?' } %>
+</article>
+
+<%# TODO: Are these supposed to be here? %>
+<!--<%#= link_to 'Edit', edit_cart_path(@cart) %> |-->
+<%#= link_to 'Back', carts_path %>

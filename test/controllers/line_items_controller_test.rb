@@ -20,13 +20,15 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
       # Updated line on December 9th, 2019 to reflect cart being a session.
       post line_items_url, params: { product_id: products(:ruby).id }
       #post line_items_url, params: { line_item: { cart_id: @line_item.cart_id, product_id: @line_item.product_id } }
+
+
     end
 
     follow_redirect!
 
-    assert_select 'h2', 'Your Pragmatic Cart'
-    # Added bit for quantity December 9th, 2019.
-    assert_select 'li', "1 \u00D7 Programming Ruby 1.9"
+    # Added Assert lines to test new cart styles.  December 9th, 2019.
+    assert_select 'h2', 'Your Cart'
+    assert_select 'td', "Programming Ruby 1.9"
 
     #assert_redirected_to line_item_url(LineItem.last)
   end
