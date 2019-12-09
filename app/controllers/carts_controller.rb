@@ -1,5 +1,7 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  # To prevent errors.  Added on December 9th, 2019.
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
   # GET /carts
   # GET /carts.json
@@ -54,21 +56,33 @@ class CartsController < ApplicationController
   # DELETE /carts/1
   # DELETE /carts/1.json
   def destroy
-    @cart.destroy
+    # This makes sure it destroys the right cart_id.
+    @cart.destroy if @cart.id == session[:cart_id]
+    # And this makes it nil.  December 9th, 2019.
+    session[:cart_id] = nil
+
     respond_to do |format|
-      format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
+      # Redirects it back to the store instead of the empty cart.
+      format.html { redirect_to store_index_url, notice: 'Your cart is currently empty.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cart
-      @cart = Cart.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_cart
+    @cart = Cart.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def cart_params
-      params.fetch(:cart, {})
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def cart_params
+    params.fetch(:cart, {})
+  end
+
+  # Added invalid_cart method to deal with bad cart ids entered into the address bar.
+  def invalid_cart
+    logger.error "Attempt to access invalid cart #{ params[:id] }"
+    redirect_to store_index_url, notice: 'Invalid cart'
+  end
+
 end

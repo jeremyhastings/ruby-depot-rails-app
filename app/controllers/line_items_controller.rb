@@ -31,14 +31,16 @@ class LineItemsController < ApplicationController
   def create
     # Use params object to get product_id and get product.  December 9th, 2019.
     product = Product.find(params[:product_id])
+    # Make the line_item with add_product method from cart. December 9th, 2019.
+    @line_item = @cart.add_product(product)
     # Pass product into @cart.line_items.build to establish relationship between product and cart.  December 9th, 2019.
-    @line_item = @cart.line_items.build(product: product)
+    #@line_item = @cart.line_items.build(product: product)
     #@line_item = LineItem.new(line_item_params)
 
     respond_to do |format|
       if @line_item.save
         # Modified line to redirect to @line_item.cart instead of @line_item.  December 9th, 2019.
-        format.html { redirect_to @line_item.cart, notice: 'Line item was successfully created.' }
+        format.html { redirect_to @line_item.cart } #, notice: 'Line item was successfully created.' } Removed 12/9/19.
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }
@@ -79,6 +81,7 @@ class LineItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_item_params
-      params.require(:line_item).permit(:product_id, :cart_id)
+      # Removed cart_id from permitted line items.  Protect access to carts.  Added December 9th, 2019.
+      params.require(:line_item).permit(:product_id)
     end
 end
