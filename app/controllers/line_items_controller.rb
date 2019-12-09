@@ -31,8 +31,10 @@ class LineItemsController < ApplicationController
   def create
     # Use params object to get product_id and get product.  December 9th, 2019.
     product = Product.find(params[:product_id])
+    # Make the line_item with add_product method from cart. December 9th, 2019.
+    @line_item = @cart.add_product(product)
     # Pass product into @cart.line_items.build to establish relationship between product and cart.  December 9th, 2019.
-    @line_item = @cart.line_items.build(product: product)
+    #@line_item = @cart.line_items.build(product: product)
     #@line_item = LineItem.new(line_item_params)
 
     respond_to do |format|
