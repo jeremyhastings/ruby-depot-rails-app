@@ -21,7 +21,8 @@
             <%# Added number_to_currency method to make value currency.  December 8th, 2019. %>
             <%= number_to_currency(product.price) %>
             <%# Added button to add a line item to cart of type product matching product_id.  December 9th, 2019. %>
-            <%= button_to 'Add to Cart', line_items_path(product_id: product) %>
+            <%# Added remote: true parameter to make an Ajax request to the server.  December 9th, 2019. %>
+            <%= button_to 'Add to Cart', line_items_path(product_id: product), remote: true %>
           </div>
         </li>
       <% end %>
