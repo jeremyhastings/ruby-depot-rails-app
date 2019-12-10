@@ -40,7 +40,10 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       if @line_item.save
         # Modified line to redirect to @line_item.cart instead of @line_item.  December 9th, 2019.
-        format.html { redirect_to @line_item.cart } #, notice: 'Line item was successfully created.' } Removed 12/9/19.
+        # Modified to redirect to store index after Cart was moved to sidebar.  December 9th, 2019.
+        format.html { redirect_to store_index_url } #, notice: 'Line item was successfully created.' } Removed 12/9/19.
+        # Added for Ajax.  December 9th, 2019 TODO: Look up more on Ajax js.
+        format.js { @current_item = @line_item } # Added so controller knows which item is most recent for animation.
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }

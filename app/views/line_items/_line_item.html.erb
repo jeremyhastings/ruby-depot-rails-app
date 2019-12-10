@@ -1,0 +1,12 @@
+<%# Added conditional checks to see if it is the current item or not so it knows what class to assign.  December 9th, 2019. %>
+<% if line_item == @current_item %>
+  <tr class="line-item-highlight">
+<% else %>
+<tr>
+<% end %>
+  <td class="quantity">
+    <%= line_item.quantity %>
+  </td>
+  <td><%= line_item.product.title %></td>
+  <td class="price"><%= number_to_currency(line_item.total_price) %></td>
+</tr>
