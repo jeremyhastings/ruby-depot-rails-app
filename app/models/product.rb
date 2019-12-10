@@ -2,6 +2,7 @@ class Product < ApplicationRecord
 
   # This associates products with line_items.  December 8th, 2019
   has_many :line_items
+  has_many :orders, through: :line_items
   # This ensures that no line items are referencing the product before deleting it.  December 8th, 2019.
   before_destroy :ensure_not_referenced_by_any_line_item
 
