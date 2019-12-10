@@ -2,3 +2,7 @@
 cart = document.getElementById("cart")
 // Our cart is comprised of a partial.  So this makes a call to render the cart everytime there is a line item creation?
 cart.innerHTML = "<%= j render(@cart) %>"
+
+// Added to dynamically remove cart empty message if you add an item to the cart.
+notice = document.getElementById("notice")
+if (notice) notice.style.display = "none"
