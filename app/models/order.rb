@@ -5,4 +5,7 @@ class Order < ApplicationRecord
       "Credit card" => 1,
       "Purchase order" => 2
   }
+  # Added validation for orders on December 10th, 2019.
+  validates :name, :address, :email, presence: true
+  validates :pay_type, inclusion: pay_types.keys
 end
