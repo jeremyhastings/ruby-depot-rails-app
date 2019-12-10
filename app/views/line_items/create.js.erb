@@ -1,0 +1,4 @@
+// This makes the element with the id Cart which happens to be our cart assigned to the value cart.
+cart = document.getElementById("cart")
+// Our cart is comprised of a partial.  So this makes a call to render the cart everytime there is a line item creation?
+cart.innerHTML = "<%= j render(@cart) %>"
