@@ -69,6 +69,7 @@ class ProductsController < ApplicationController
     @latest_order = @product.orders.order(:updated_at).last
     if stale?(@latest_order)
       respond_to do | format |
+        # format.atom causes rails to look for who_bought.atom.builder in the views/products folder.
         format.atom
       end
     end
