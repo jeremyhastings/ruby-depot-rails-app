@@ -1,3 +1,16 @@
 // Place all the styles related to the LineItems controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// This is going to give the Cart an animation.  Flash yellow fade back to white.  December 9th, 2019.
+@keyframes line-item-highlight {
+  0% {
+    background: #8f8;
+  }
+  100% {
+    background: none;
+  }
+}
+.line-item-highlight {
+  animation: line-item-highlight 1s;
+}
