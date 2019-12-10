@@ -1,4 +1,6 @@
 class Order < ApplicationRecord
+  # States that orders have many lineitems.  December 10th, 2019.
+  has_many :line_items, dependent: :destroy
   # Added this prior to migration and using enum to keep track of payment type.  December 10th, 2019.
   enum pay_type: {
       "Check" => 0,

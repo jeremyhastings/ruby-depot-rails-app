@@ -30,10 +30,16 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
+    # Loop through all the line items in the cart and add them to the order.  December 10th, 2019.
+    @order.add_line_items_from_cart(@cart)
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        # Destroy the cart after the order is saved.  December 10th, 2019
+        Cart.destroy(session[:cart_id])
+        session[:cart_id] = nil
+        # redirect back to store instead of @order.  December 10th, 2019
+        format.html { redirect_to store_index_url, notice: 'Thank you for your order.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
