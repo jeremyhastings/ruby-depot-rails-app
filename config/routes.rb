@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :orders
   resources :line_items
   resources :carts
   # Made the index action of the store controller the root page.  December 8th, 2019.
