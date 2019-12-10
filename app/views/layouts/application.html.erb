@@ -10,7 +10,6 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <header class="main">
       <%= image_tag 'logo.svg', alt: 'The Pragmatic Bookshelf' %>
@@ -22,7 +21,10 @@
         <%# Added to display cart if there is a cart.  Avoid nil errors.  December 9th, 2019. %>
         <% if @cart %>
           <div id="cart" class="carts">
-            <%= render @cart %>
+            <%# Calls render_if method in application helper.  Determines whether to display cart partial or not.
+            December 9th, 2019. %>
+            <%= render_if @cart && @cart.line_items.any?, @cart %>
+            <%#= render @cart %>
           </div>
         <% end %>
         <ul>
@@ -38,6 +40,7 @@
         <%= yield %>
 
       </main>
+
     </section>
 
 
