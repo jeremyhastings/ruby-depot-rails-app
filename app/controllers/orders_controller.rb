@@ -72,6 +72,19 @@ class OrdersController < ApplicationController
     end
   end
 
+  # This was added to account for complex params values coming from React addition for paytype.  December 11th, 2019.
+  def pay_type_params
+    if order_params[:pay_type] == "Credit Card"
+      params.require(:order).permit(:credit_card_number, :expiration_date)
+    elsif order_params[:pay_type] == "Check"
+      params.require(:order).permit(:routing_number, :account_number)
+    elsif order_params[:pay_type] == "Purchase Order"
+      params.require(:order).permit(:po_number)
+    else
+      {}
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
@@ -82,6 +95,7 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:name, :address, :email, :pay_type)
     end
+
     # Determines whether the cart is empty or not.  December 10th, 2019.
     def ensure_cart_isnt_empty
       if @cart.line_items.empty?
