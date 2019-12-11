@@ -38,6 +38,7 @@ class OrdersController < ApplicationController
         # Destroy the cart after the order is saved.  December 10th, 2019
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
+        # @order.charge!(pay_type_params) # This is a bad idea.  Doesn't move process to background.
         # Call mailer to let customer know the order was received.  December 11th, 2019
         OrderMailer.received(@order).deliver_now # TODO: Change to deliver.later
         # redirect back to store instead of @order.  December 10th, 2019
