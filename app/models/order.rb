@@ -1,5 +1,5 @@
 # I missed this, unsure when this was supposed to be added.  December 11th, 2019.
-require 'active_model/serializers/xml'
+#require 'active_model/serializers/xml'
 # This is using fake payment processor.  December 11th, 2019.
 require 'pago'
 
