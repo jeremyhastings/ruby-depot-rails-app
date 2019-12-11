@@ -38,6 +38,10 @@ class OrdersController < ApplicationController
         # Destroy the cart after the order is saved.  December 10th, 2019
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
+        # @order.charge!(pay_type_params) # This is a bad idea.  Doesn't move process to background.
+        ChargeOrderJob.perform_later(@order, pay_type_params.to_h)
+        # Call mailer to let customer know the order was received.  December 11th, 2019
+        OrderMailer.received(@order).deliver_now # TODO: Change to deliver.later
         # redirect back to store instead of @order.  December 10th, 2019
         format.html { redirect_to store_index_url, notice: 'Thank you for your order.' }
         format.json { render :show, status: :created, location: @order }
@@ -85,22 +89,23 @@ class OrdersController < ApplicationController
     end
   end
 
-  private
     # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
-    end
+  private
+  def set_order
+    @order = Order.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def order_params
-      params.require(:order).permit(:name, :address, :email, :pay_type)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def order_params
+    params.require(:order).permit(:name, :address, :email, :pay_type)
+  end
 
-    # Determines whether the cart is empty or not.  December 10th, 2019.
-    def ensure_cart_isnt_empty
-      if @cart.line_items.empty?
-        redirect_to store_index_url, notice: 'Your cart is empty'
-      end
+  # Determines whether the cart is empty or not.  December 10th, 2019.
+  private
+  def ensure_cart_isnt_empty
+    if @cart.line_items.empty?
+      redirect_to store_index_url, notice: 'Your cart is empty'
     end
+  end
 
 end
