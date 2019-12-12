@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  skip_before_action :authorize, only: [:new, :create]
+
   # Include the cart module and call new method to check to see if cart is empty.  December 10th, 2019
   include CurrentCart
   before_action :set_cart, only: [:new, :create]
