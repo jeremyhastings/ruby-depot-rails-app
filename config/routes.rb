@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     get :who_bought, on: :member
   end
 
-  resources :support_requests, only; [ :index, :update ]
+  resources :support_requests, only: [ :index, :update ]
 
   # Added for Internationalization.  December 12th, 2019.
   scope '(:locale)' do
