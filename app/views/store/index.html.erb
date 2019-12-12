@@ -3,7 +3,7 @@
   <aside id="notice"><%= notice %></aside>
 <% end %>
 
-<h1>Your Pragmatic Catalog</h1>
+<h1><%= t('.title_html') %></h1>
 
 <ul class="catalog">
   <%# cache lines added to only update products if product changes.  December 8th, 2019 %>
@@ -23,7 +23,7 @@
             <%# Added button to add a line item to cart of type product matching product_id.  December 9th, 2019. %>
             <%# Added remote: true parameter to make an Ajax request to the server.  December 9th, 2019. %>
             <%# TODO: Look up more on Ajax Rails and remote: true parameter. %>
-            <%= button_to 'Add to Cart', line_items_path(product_id: product), remote: true %>
+            <%= button_to t('.add_html'), line_items_path(product_id: product), remote: true %>
           </div>
         </li>
       <% end %>
