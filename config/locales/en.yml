@@ -77,3 +77,4 @@ en:
         expiration_date:  "Expiry"
       purchase_order_pay_type:
         po_number:      "PO #"
+  thanks: "Thank you for your order"
