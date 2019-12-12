@@ -30,4 +30,11 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+
+  layouts:
+    application:
+      title:      "The Pragmatic Bookshelf"
+      home:       "Home"
+      questions:  "Questions"
+      news:       "News"
+      contact:    "Contact"

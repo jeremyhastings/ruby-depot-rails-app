@@ -19,19 +19,19 @@
     <section class="content">
       <nav class="side_nav">
         <%# Added to display cart if there is a cart.  Avoid nil errors.  December 9th, 2019. %>
-        <% if @cart %>
+        <%# if @cart %>
           <div id="cart" class="carts">
             <%# Calls render_if method in application helper.  Determines whether to display cart partial or not.
             December 9th, 2019. %>
             <%= render_if @cart && @cart.line_items.any?, @cart %>
             <%#= render @cart %>
           </div>
-        <% end %>
+        <%# end %>
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/questions">Questions</a></li>
-          <li><a href="/news">News</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li><a href="/"><%= t('.home') %></a></li>
+          <li><a href="/questions"><%= t('.questions') %>></a></li>
+          <li><a href="/news"><%= t('.news') %>></a></li>
+          <li><a href="/contact"><%= t('.contact') %>></a></li>
         </ul>
 
         <%# This is an administrative sidemenu.  December 12th, 2019. %>
