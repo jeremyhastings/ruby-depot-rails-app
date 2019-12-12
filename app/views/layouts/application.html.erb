@@ -18,6 +18,12 @@
   </head>
   <body>
     <header class="main">
+      <aside>
+        <%= form_tag store_index_path, class: 'locale' do %>
+          <%= select_tag 'set_locale', options_for_select(LANGUAGES, I18n.locale.to_s), onchange: 'this.form.submit()' %>
+          <%= submit_tag 'submit', id: "submit_locale_change" %>
+        <% end %>
+      </aside>
       <%= image_tag 'logo.svg', alt: 'The Pragmatic Bookshelf' %>
       <%# This sets a title based off the page_title variable if set by the page.  Otherwise blank. %>
       <h1><%= @page_title %></h1>
