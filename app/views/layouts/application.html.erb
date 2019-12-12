@@ -9,9 +9,21 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script type="text/javascript" charset="utf-8">
+      I18n.defaultLocale = "<%= I18n.default_locale %>";
+      I18n.locale = "<%= I18n.locale %>";
+    </script>
+
   </head>
   <body>
     <header class="main">
+      <aside>
+        <%= form_tag store_index_path, class: 'locale' do %>
+          <%= select_tag 'set_locale', options_for_select(LANGUAGES, I18n.locale.to_s), onchange: 'this.form.submit()' %>
+          <%= submit_tag 'submit', id: "submit_locale_change" %>
+        <% end %>
+      </aside>
       <%= image_tag 'logo.svg', alt: 'The Pragmatic Bookshelf' %>
       <%# This sets a title based off the page_title variable if set by the page.  Otherwise blank. %>
       <h1><%= @page_title %></h1>
@@ -19,19 +31,19 @@
     <section class="content">
       <nav class="side_nav">
         <%# Added to display cart if there is a cart.  Avoid nil errors.  December 9th, 2019. %>
-        <% if @cart %>
+        <%# if @cart %>
           <div id="cart" class="carts">
             <%# Calls render_if method in application helper.  Determines whether to display cart partial or not.
             December 9th, 2019. %>
             <%= render_if @cart && @cart.line_items.any?, @cart %>
             <%#= render @cart %>
           </div>
-        <% end %>
+        <%# end %>
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/questions">Questions</a></li>
-          <li><a href="/news">News</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li><a href="/"><%= t('.home') %></a></li>
+          <li><a href="/questions"><%= t('.questions') %></a></li>
+          <li><a href="/news"><%= t('.news') %></a></li>
+          <li><a href="/contact"><%= t('.contact') %></a></li>
         </ul>
 
         <%# This is an administrative sidemenu.  December 12th, 2019. %>

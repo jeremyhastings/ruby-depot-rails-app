@@ -31,7 +31,7 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
     end
 
     # modified so it redirects back to store instead of order.  December 10th, 2019.
-    assert_redirected_to store_index_url
+    assert_redirected_to store_index_url(locale: 'en')
   end
 
   test "should show order" do
