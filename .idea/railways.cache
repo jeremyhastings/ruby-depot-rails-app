@@ -1,21 +1,19 @@
                                Prefix Verb   URI Pattern                                                                              Controller#Action
-                           line_items GET    /line_items(.:format)                                                                    line_items#index
-                                      POST   /line_items(.:format)                                                                    line_items#create
-                        new_line_item GET    /line_items/new(.:format)                                                                line_items#new
-                       edit_line_item GET    /line_items/:id/edit(.:format)                                                           line_items#edit
-                            line_item GET    /line_items/:id(.:format)                                                                line_items#show
-                                      PATCH  /line_items/:id(.:format)                                                                line_items#update
-                                      PUT    /line_items/:id(.:format)                                                                line_items#update
-                                      DELETE /line_items/:id(.:format)                                                                line_items#destroy
-                                carts GET    /carts(.:format)                                                                         carts#index
-                                      POST   /carts(.:format)                                                                         carts#create
-                             new_cart GET    /carts/new(.:format)                                                                     carts#new
-                            edit_cart GET    /carts/:id/edit(.:format)                                                                carts#edit
-                                 cart GET    /carts/:id(.:format)                                                                     carts#show
-                                      PATCH  /carts/:id(.:format)                                                                     carts#update
-                                      PUT    /carts/:id(.:format)                                                                     carts#update
-                                      DELETE /carts/:id(.:format)                                                                     carts#destroy
-                          store_index GET    /                                                                                        store#index
+                                admin GET    /admin(.:format)                                                                         admin#index
+                                login GET    /login(.:format)                                                                         sessions#new
+                                      POST   /login(.:format)                                                                         sessions#create
+                               logout DELETE /logout(.:format)                                                                        sessions#destroy
+                      sessions_create GET    /sessions/create(.:format)                                                               sessions#create
+                     sessions_destroy GET    /sessions/destroy(.:format)                                                              sessions#destroy
+                                users GET    /users(.:format)                                                                         users#index
+                                      POST   /users(.:format)                                                                         users#create
+                             new_user GET    /users/new(.:format)                                                                     users#new
+                            edit_user GET    /users/:id/edit(.:format)                                                                users#edit
+                                 user GET    /users/:id(.:format)                                                                     users#show
+                                      PATCH  /users/:id(.:format)                                                                     users#update
+                                      PUT    /users/:id(.:format)                                                                     users#update
+                                      DELETE /users/:id(.:format)                                                                     users#destroy
+                   who_bought_product GET    /products/:id/who_bought(.:format)                                                       products#who_bought
                              products GET    /products(.:format)                                                                      products#index
                                       POST   /products(.:format)                                                                      products#create
                           new_product GET    /products/new(.:format)                                                                  products#new
@@ -24,6 +22,34 @@
                                       PATCH  /products/:id(.:format)                                                                  products#update
                                       PUT    /products/:id(.:format)                                                                  products#update
                                       DELETE /products/:id(.:format)                                                                  products#destroy
+                     support_requests GET    /support_requests(.:format)                                                              support_requests#index
+                      support_request PATCH  /support_requests/:id(.:format)                                                          support_requests#update
+                                      PUT    /support_requests/:id(.:format)                                                          support_requests#update
+                               orders GET    (/:locale)/orders(.:format)                                                              orders#index
+                                      POST   (/:locale)/orders(.:format)                                                              orders#create
+                            new_order GET    (/:locale)/orders/new(.:format)                                                          orders#new
+                           edit_order GET    (/:locale)/orders/:id/edit(.:format)                                                     orders#edit
+                                order GET    (/:locale)/orders/:id(.:format)                                                          orders#show
+                                      PATCH  (/:locale)/orders/:id(.:format)                                                          orders#update
+                                      PUT    (/:locale)/orders/:id(.:format)                                                          orders#update
+                                      DELETE (/:locale)/orders/:id(.:format)                                                          orders#destroy
+                           line_items GET    (/:locale)/line_items(.:format)                                                          line_items#index
+                                      POST   (/:locale)/line_items(.:format)                                                          line_items#create
+                        new_line_item GET    (/:locale)/line_items/new(.:format)                                                      line_items#new
+                       edit_line_item GET    (/:locale)/line_items/:id/edit(.:format)                                                 line_items#edit
+                            line_item GET    (/:locale)/line_items/:id(.:format)                                                      line_items#show
+                                      PATCH  (/:locale)/line_items/:id(.:format)                                                      line_items#update
+                                      PUT    (/:locale)/line_items/:id(.:format)                                                      line_items#update
+                                      DELETE (/:locale)/line_items/:id(.:format)                                                      line_items#destroy
+                                carts GET    (/:locale)/carts(.:format)                                                               carts#index
+                                      POST   (/:locale)/carts(.:format)                                                               carts#create
+                             new_cart GET    (/:locale)/carts/new(.:format)                                                           carts#new
+                            edit_cart GET    (/:locale)/carts/:id/edit(.:format)                                                      carts#edit
+                                 cart GET    (/:locale)/carts/:id(.:format)                                                           carts#show
+                                      PATCH  (/:locale)/carts/:id(.:format)                                                           carts#update
+                                      PUT    (/:locale)/carts/:id(.:format)                                                           carts#update
+                                      DELETE (/:locale)/carts/:id(.:format)                                                           carts#destroy
+                          store_index        /(:locale)(.:format)                                                                     store#index
         rails_mandrill_inbound_emails POST   /rails/action_mailbox/mandrill/inbound_emails(.:format)                                  action_mailbox/ingresses/mandrill/inbound_emails#create
         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
            rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                     action_mailbox/ingresses/relay/inbound_emails#create

@@ -14,19 +14,12 @@
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/features" isTestSource="true" />
-      <excludeFolder url="file://$MODULE_DIR$/.bundle" />
-      <excludeFolder url="file://$MODULE_DIR$/components" />
-      <excludeFolder url="file://$MODULE_DIR$/log" />
-      <excludeFolder url="file://$MODULE_DIR$/public/packs" />
-      <excludeFolder url="file://$MODULE_DIR$/public/system" />
-      <excludeFolder url="file://$MODULE_DIR$/tmp" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/bundle" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/cache" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/tmp/cache" />
     </content>
-    <orderEntry type="jdk" jdkName="rbenv: 2.6.5" jdkType="RUBY_SDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="actioncable (v6.0.1, rbenv: 2.6.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actionmailbox (v6.0.1, rbenv: 2.6.5) [gem]" level="application" />
