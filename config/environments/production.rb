@@ -114,7 +114,7 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   # Mail information.  December 28th, 2019.
-  config.action_mailer.default_url_options = { host: "fathomless-beyond-96368.herokuapp.com", protocol: "http" }
+  config.action_mailer.default_url_options = { host: "limitless-hamlet-28741.herokuapp.com", protocol: "http" }
   #config.action_mailer.delivery_method = :smtp
   #config.action_mailer.perform_deliveries = true
   #config.action_mailer.raise_delivery_errors = false
