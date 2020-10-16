@@ -2,7 +2,7 @@
   "name": "the_depot_application",
   "private": true,
   "dependencies": {
-    "@babel/preset-react": "7.10.4",
+    "@babel/preset-react": "7.12.1",
     "@rails/actioncable": "6.0.2",
     "@rails/actiontext": "6.0.2",
     "@rails/activestorage": "6.0.2",
