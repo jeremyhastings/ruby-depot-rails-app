@@ -935,10 +935,10 @@
   resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.0.2.tgz#bcba9bcd6ee09a47c6628336e07399a68ca87814"
   integrity sha512-vN78gohsXPlC5jxBHlmiwkUI9bv6SulcZaE72kAIg/G4ou+wTdiMWPJK1bf2IxUNf+sfOjhl+tbRmY4AzJcgrw==
 
-"@rails/actiontext@6.0.2":
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/@rails/actiontext/-/actiontext-6.0.2.tgz#1ad5ecfe5a64affb9cca7908a996c635cb0b2224"
-  integrity sha512-fxCGPRud14H4LTlAMLCtXDvhrNA9xswg2LwTYMEHzLQ0EPz2VU5ixDLygtYQymVq+9GtZ6CFGsvbOT0HhUJsGQ==
+"@rails/actiontext@6.1.2":
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/@rails/actiontext/-/actiontext-6.1.2.tgz#a58b008c604a8b221bc1c41a7cc806a373625863"
+  integrity sha512-6CK7E0mpsARpy2khor6bNUhziI5qAwJeKh5P/sYL3vN1kJ4Ma6+WC+jvsZI+uQ8hecbpFTGR9fuhV9OHCnLe6Q==
   dependencies:
     "@rails/activestorage" "^6.0.0-alpha"
 
